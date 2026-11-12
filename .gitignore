@@ -1,0 +1,8 @@
+spark-warehouse/
+metastore_db/
+derby.log
+target/
+project/target/
+__pycache__/
+*.pyc
+.idea/

@@ -1,0 +1,8 @@
+# Spark Declarative Pipelines spec — Auto CDC with SCD Type 2 (Spark 4.3+)
+# Run from this folder:   spark-pipelines run
+# The SCD2 target must live in a catalog whose DSv2 connector supports row-level operations
+# (for example Apache Iceberg). Configure that catalog in your Spark conf before running.
+name: customers_history_pipeline
+libraries:
+  - glob:
+      include: transformations/**

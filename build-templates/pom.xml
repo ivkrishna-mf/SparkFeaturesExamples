@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Generic Maven build for any release folder's java_examples.
+    mvn -q package -Dspark.version=4.3.0 -Dscala.binary.version=2.13 -Djava.release=17 \
+        -Dexamples.dir=../spark4.3.0/java_examples
+    spark-submit --class Spark430Features target/spark-release-examples-0.1.jar
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>examples</groupId>
+  <artifactId>spark-release-examples</artifactId>
+  <version>0.1</version>
+
+  <properties>
+    <spark.version>4.3.0</spark.version>
+    <scala.binary.version>2.13</scala.binary.version>
+    <java.release>17</java.release>
+    <examples.dir>../spark4.3.0/java_examples</examples.dir>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_${scala.binary.version}</artifactId>
+      <version>${spark.version}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <sourceDirectory>${examples.dir}</sourceDirectory>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.13.0</version>
+        <configuration>
+          <release>${java.release}</release>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

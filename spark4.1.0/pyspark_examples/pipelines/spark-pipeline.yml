@@ -1,0 +1,7 @@
+# Spark Declarative Pipelines spec (Spark 4.1+)
+# Run from this folder:   spark-pipelines run
+# (create a fresh skeleton with:  spark-pipelines init --name my_pipeline)
+name: orders_pipeline
+libraries:
+  - glob:
+      include: transformations/**
